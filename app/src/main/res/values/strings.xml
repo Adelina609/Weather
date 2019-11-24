@@ -2,4 +2,8 @@
     <string name="app_name">Weather</string>
     <string name="weather">Weather</string>
     <string name="textview">TextView</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="error">Error to load data, permissions denied</string>
 </resources>
