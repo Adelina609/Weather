@@ -6,7 +6,6 @@ import dagger.Component
 import ru.kpfu.itis.android.weather.di.app.module.ContextModule
 import ru.kpfu.itis.android.weather.di.app.module.DataNetModule
 import ru.kpfu.itis.android.weather.di.app.module.LocationModule
-import ru.kpfu.itis.android.weather.di.weather.module.InteractorModule
 import ru.kpfu.itis.android.weather.di.app.scope.ApplicationScope
 import ru.kpfu.itis.android.weather.network.OpenWeatherApi
 

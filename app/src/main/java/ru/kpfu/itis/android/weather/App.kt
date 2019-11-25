@@ -10,12 +10,12 @@ import ru.kpfu.itis.android.weather.di.app.module.LocationModule
 class App : Application() {
 
     override fun onCreate() {
-        super.onCreate()
         appComponent = DaggerAppComponent.builder()
             .contextModule(ContextModule(this))
             .dataNetModule(DataNetModule())
             .locationModule(LocationModule())
             .build()
+        super.onCreate()
     }
 
     companion object {

@@ -7,6 +7,9 @@ import ru.kpfu.itis.android.weather.model.Weather
 
 interface OpenWeatherApi {
 
-    @GET
-    fun getWeatherData(@Query("lat") lat : Double, @Query("lon") lon : Double) : Single<Weather>
+    @GET("weather")
+    fun getWeatherData(@Query("lat") lat : Double,
+                       @Query("lon") lon : Double,
+                       @Query("appid") appid : String,
+                       @Query("units") units : String) : Single<Weather>
 }

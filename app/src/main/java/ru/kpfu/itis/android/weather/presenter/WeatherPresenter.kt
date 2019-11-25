@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
+import ru.kpfu.itis.android.weather.BuildConfig
 import ru.kpfu.itis.android.weather.interactor.WeatherInteractor
 import ru.kpfu.itis.android.weather.ui.WeatherView
 
@@ -13,6 +14,8 @@ class WeatherPresenter(
     private val weatherInteractor: WeatherInteractor
 ) : MvpPresenter<WeatherView>() {
 
+    private val apiKey = BuildConfig.API_KEY
+    private val units = "metric"
     private val disposables = CompositeDisposable()
 
     override fun onFirstViewAttach() {
@@ -26,15 +29,21 @@ class WeatherPresenter(
     }
 
     fun onLocationPermissionsDenied() {
-//        viewState.displayNeedPermissionsError()
+        viewState.displayNeedPermissionsError()
     }
 
     fun onLocationPermissionsGranted() {
         getWeather()
     }
 
-    fun getWeather() {
+    private fun getWeather() {
         disposables += weatherInteractor.getGeoPosition()
+            .doOnSubscribe {
+                viewState.showProgressBar()
+            }
+            .doAfterTerminate {
+                viewState.hideProgressBar()
+            }
             .subscribeBy(onSuccess = {
                 getWeatherByLatLon(it.latitude, it.longitude)
             }, onError = {
@@ -43,7 +52,7 @@ class WeatherPresenter(
     }
 
     private fun getWeatherByLatLon(lat: Double, lon: Double) {
-        disposables += weatherInteractor.getWeather(lat, lon)
+        disposables += weatherInteractor.getWeather(lat, lon, apiKey, units)
             .subscribeBy(onSuccess = {
                 viewState.displayWeather(it)
             }, onError = {

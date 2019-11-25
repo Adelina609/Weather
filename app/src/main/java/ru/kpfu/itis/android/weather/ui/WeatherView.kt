@@ -11,4 +11,6 @@ interface WeatherView : MvpView {
     fun displayError(error: Throwable)
     fun checkLocationPermissions()
     fun displayNeedPermissionsError()
+    fun showProgressBar()
+    fun hideProgressBar()
 }

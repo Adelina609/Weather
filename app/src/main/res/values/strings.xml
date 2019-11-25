@@ -5,5 +5,9 @@
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
     <string name="pressure">Pressure</string>
-    <string name="error">Error to load data, permissions denied</string>
+    <string name="error_permissions">Error to load data, permissions denied</string>
+    <string name="error">Error to load data</string>
+    <string name="error_settings">Error to load data, GPS is turned off</string>
+    <string name="min_temp">Min temp:</string>
+    <string name="max_temp">Max temp:</string>
 </resources>

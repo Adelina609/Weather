@@ -13,7 +13,16 @@ class MainActivity : MvpAppCompatActivity() {
             .appComponent(App.getAppComponents())
             .build()
             .inject(this)
-        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        super.onCreate(savedInstanceState)
+        addFragment()
+    }
+
+    private fun addFragment() {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = WeatherFragment()
+        fragmentTransaction.add(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()
     }
 }

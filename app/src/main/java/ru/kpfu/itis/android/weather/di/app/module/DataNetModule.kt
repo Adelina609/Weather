@@ -11,7 +11,7 @@ import ru.kpfu.itis.android.weather.network.OpenWeatherApi
 @Module
 class DataNetModule {
     companion object {
-        private const val BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+        private const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
     }
 
     @Provides
@@ -27,7 +27,8 @@ class DataNetModule {
 
     @Provides
     @ApplicationScope
-    fun provideWeatherApi(retrofit: Retrofit): OpenWeatherApi = retrofit.create(OpenWeatherApi::class.java)
+    fun provideWeatherApi(retrofit: Retrofit): OpenWeatherApi =
+        retrofit.create(OpenWeatherApi::class.java)
 
     @Provides
     @ApplicationScope
@@ -35,5 +36,6 @@ class DataNetModule {
 
     @Provides
     @ApplicationScope
-    fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
+    fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory =
+        RxJava2CallAdapterFactory.create()
 }

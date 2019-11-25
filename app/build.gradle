@@ -19,6 +19,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        it.buildConfigField "String", "API_KEY", API_KEY
+    }
 }
 
 dependencies {
@@ -56,6 +59,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${retrofit2_version}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofit2_version}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    kapt 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.google.android.material:material:1.0.0'
 }

@@ -14,8 +14,8 @@ class WeatherInteractor(
     private val fusedLocationClient: FusedLocationProviderClient
 ) {
 
-    fun getWeather(lat: Double, lon: Double): Single<Weather> =
-        weatherApi.getWeatherData(lat, lon)
+    fun getWeather(lat: Double, lon: Double, appid: String, units: String): Single<Weather> =
+        weatherApi.getWeatherData(lat, lon, appid, units)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
@@ -29,5 +29,4 @@ class WeatherInteractor(
         }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-
 }
